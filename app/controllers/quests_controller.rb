@@ -1,4 +1,5 @@
 class QuestsController < ApplicationController
+  before_action :move_to_index, except: [:index, :show,]
 
   def new
     @quest = Quest.new
@@ -11,6 +12,11 @@ class QuestsController < ApplicationController
 
   def index
     @quests = Quest.all.order("created_at DESC")
+  end
+
+  def show
+    @quests = Quest.find(params[:id])
+    @answers = @quests.answer.includes(:user)
   end
 
   private
