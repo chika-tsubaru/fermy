@@ -1,0 +1,13 @@
+.content_row
+  .main_quest 
+    メインクエスト: 仮説力を向上させよう
+  .quests_post
+    - @quests.each do |quest|
+      .content_row
+        .content
+          = quest.title
+        .btns
+          = link_to '#', class: "content_btn" do
+            解答集
+          = link_to '#', class: "content_btn" do
+            挑む

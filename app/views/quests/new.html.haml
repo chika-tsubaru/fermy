@@ -1,0 +1,5 @@
+.quest_form
+  = form_with model: @quest, local: true do |f|
+    .form__contents
+      = f.text_field :title, class: 'title', placeholder: 'クエスト内容'
+    = f.submit '発注', class: 'btn'

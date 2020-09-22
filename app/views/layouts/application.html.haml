@@ -1,0 +1,24 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Fermy
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    .header
+      .head_title
+        = link_to '/', class: "title" do
+          Fermy
+      .head_btns
+        = link_to '#', class: "btn" do
+          ログアウト
+        = link_to '/quests/new', class: "btn" do
+          クエスト発注
+    = yield
+    .footer
+      .foot_title
+        %h2
+          あなたなら、どんな切り口で解く？
