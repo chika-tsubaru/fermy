@@ -1,0 +1,28 @@
+.AccountPage
+  .AccountPage_title
+    %h5 新規アカウントの作成
+  .AccountPage_form
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      .FormField
+        .FormField__label--normal
+          = f.label :名前
+        .FormField_input-normal
+          = f.text_field :name, class: 'name_form', autofocus: true
+        .FormField__label--normal
+          = f.label :Eメール
+        .FormField_input-normal
+          = f.email_field :email, class: 'email_form'
+      .FormField
+        .FormField_label-normal
+          = f.label :password
+          %i (英数字8文字以上)
+        .FormField_input-normal
+          = f.password_field :password, autocomplete: "off", class: 'password_form'
+      .FormField
+        .FormField_label-normal
+          = f.label :password
+          %i (確認用)
+        .FormField_input-normal
+          = f.password_field :password_confirmation, autocomplete: "off", class: 'password_form'
+      .actions
+        = f.submit "サインアップ", class: 'accont-btn'

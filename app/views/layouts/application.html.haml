@@ -6,19 +6,28 @@
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    -# %script{:type => "text/javascript", :src  => "javascripts/script.js"}
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    -# = javascript_include_tag 'application'
   %body
     .header
       .head_title
         = link_to '/', class: "title" do
           Fermy
       .head_btns
-        = link_to '#', class: "btn" do
-          ログアウト
-        = link_to '/quests/new', class: "btn" do
-          クエスト発注
+        - if user_signed_in?
+          = link_to destroy_user_session_path, method: :delete, class: "btn" do
+            ログアウト
+          = link_to '/quests/new', class: "btn" do
+            クエスト発注
+        - else
+          = link_to '/users/sign_in', class: "btn" do
+            ログイン
+          = link_to '/users/sign_up', class: "btn" do
+            サインアップ
+
     = yield
     .footer
       .foot_title
         %h2
-          あなたなら、どんな切り口で解く？
+          どんな切り口で解こうか？

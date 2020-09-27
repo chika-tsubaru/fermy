@@ -1,0 +1,18 @@
+.AccountPage
+  .AccountPage_title
+    %h5 登録しているユーザーでログイン
+  .AccountPage_form
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .FormField
+        .FormField_label-normal
+          = f.label :email
+        .FormField_input-normal
+          = f.email_field :email, class: 'email_form', autofocus: true
+        .FormField
+          .FormField_label-normal
+            = f.label :password
+            %i (英数字8文字以上)
+          .FormField_input-normal
+            = f.password_field :password, class: 'password_form', autocomplete: "off"
+        .actions
+          = f.submit "ログイン", class: 'accont-btn'

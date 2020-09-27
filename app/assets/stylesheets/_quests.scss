@@ -15,11 +15,13 @@
   .head_btns {
     background-color: wheat;
     margin-right: 40px;
-    height: 40%;
-    padding-top: 20px;
+    height: 30%;
+    padding-top: 23px;
     .btn {
       margin: 10px;
       text-decoration: none;
+      border: solid 2px white;
+      font-size: 15px;
     }
   }
 
@@ -29,37 +31,114 @@
   text-align: center;
   .main_quest {
     padding: 20px ;
-    margin: 30px 20% 30px 20%;
+    margin: 20px 20% 20px 20%;
     background-color: rgb(13, 218, 245);
     color: white;
+    font-weight: bold;
     font-size: 20px;
   }
   .quests_post {
+    height: 55vh;
+    overflow: scroll;
     .content_row {
       display: flex;
       justify-content: space-between;
-      margin: 30px 10% 0px 10%;
+      margin: 10px 10% 30px 10%;
       color: white;
       background-color: rgb(39, 39, 146);
       padding-top: 10px;
       padding-bottom: 10px;
-      margin-left: 10%;
-      margin-right: 10%;
       .content {
         padding: 10px;
-        width: 70%;
+        width: 80%;
       }
       .btns {
-        width: 30%;
+        width: 10%;
         display: flex;
-        justify-content: right;
-        background-color: white;
+        justify-content: space-between;
         margin: 5px;
         .content_btn {
           padding: 5px;
+          border: solid 2px orange;
           text-decoration: none;
+          background-color: white;
         }
       }
     }
+  }
+}
+
+.quest_form {
+  height: 55vh;
+  text-align: center;
+  .form_contents {
+    margin: 40px;
+    background-color: rgb(39, 39, 146);
+    .title {
+      width: 80%;
+      background-color: rgb(39, 39, 146);
+      color: white;
+      margin: 30px;
+      border: solid 5px white;
+      padding: 10px;
+    }
+  }
+  .btn {
+    font-weight: bold;
+    color: blue;
+    background-color: yellow;
+    margin: 5px 40px 5px 40px;
+    padding: 10px;
+  }
+}
+
+.content_box {
+  height: 70vh;
+  text-align: center;
+  overflow: scroll;
+  .quest_title {
+    padding: 10px;
+    margin: 10px 10% 10px 10% ;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: rgb(13, 218, 245);
+    color: white;
+    .btn {
+      margin: 5px 45% 5px 45%;
+      padding: 5px;
+      border: solid 2px orange;
+      background-color: white;
+    }
+  }
+  .answer_row {
+    font-weight: bolder;
+    font-size: 10px;
+    .content {
+      font-size: 15px;
+      border: solid 1px blue;
+      margin: 30px 10% 0px 10%;
+      .answer_plan {
+        padding: 5px;
+        color: blue;
+        background-color: yellow;
+        margin: 5px 40px 5px 40px;
+      }
+      .answer_text {
+        text-align: left;
+        padding: 5px;
+        border: solid 1px brown;
+        margin: 0px 40px 5px 40px;
+      }
+    }
+  }
+}
+
+.footer {
+  .foot_title {
+    height: 5vh;
+    text-align: center;
+    padding-top: 30px;
+    font-size: 20px;
+    color: gray;
   }
 }

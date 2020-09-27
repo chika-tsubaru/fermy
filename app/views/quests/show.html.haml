@@ -1,0 +1,17 @@
+.content_box
+  .quest_title
+    = @quest.title
+    .btn
+      = link_to new_quest_answer_path(@quest.id), class: "content_btn" do
+        挑む
+  .answer_row
+    ＜解答一覧＞
+    -if @answer
+      - @answers.each do |answer|
+        .content
+          .answer_plan
+            = answer.plan
+          .answer_text
+            = safe_join(answer.text.split("\n"),tag(:br))
+            = answer.text
+            %button class:answer_btn 解答展開 
