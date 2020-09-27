@@ -6,14 +6,14 @@ class AnswersController < ApplicationController
   end
 
   def create
-    Answer.create!(answer_params)
+    Answer.create(answer_params)
     # binding.pry
     redirect_to quest_path(params[:quest_id])
   end
 
   private
   def answer_params
-    params.require(:answer).permit(:plan, :text).merge(user_id: params[:user_id], quest_id: params[:quest_id])
+    params.require(:answer).permit(:plan, :text).merge(quest_id: params[:quest_id])
   end
 
 end

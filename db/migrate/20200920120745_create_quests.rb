@@ -1,7 +1,7 @@
 class CreateQuests < ActiveRecord::Migration[6.0]
   def change
     create_table :quests do |t|
-      t.string :title
+      t.string :title, null: false
       t.timestamps
     end
   end

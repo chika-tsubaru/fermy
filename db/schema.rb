@@ -16,16 +16,16 @@ ActiveRecord::Schema.define(version: 2020_09_22_080219) do
   enable_extension "plpgsql"
 
   create_table "answers", force: :cascade do |t|
-    t.string "plan"
-    t.text "text"
+    t.string "plan", null: false
+    t.text "text", null: false
     t.integer "user_id"
-    t.integer "quest_id"
+    t.integer "quest_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "quests", force: :cascade do |t|
-    t.string "title"
+    t.string "title", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2020_09_22_080219) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "name"
+    t.string "name", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
