@@ -17,7 +17,7 @@ class QuestsController < ApplicationController
 
   def show
     @answer = Answer.new
-    @answers = @quest.answers.includes(:user)
+    @answers = @quest.answers.includes(:user).order("created_at DESC")
   end
 
   private
