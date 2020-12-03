@@ -86,3 +86,6 @@ production:
   database: fermy_production
   username: fermy
   password: <%= ENV['FERMY_DATABASE_PASSWORD'] %>
+  # adapter: postgresql
+  # encoding: unicode
+  # pool: 5
