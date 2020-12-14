@@ -10,6 +10,7 @@
     -# = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application'
   %body
+    = render 'layouts/notifications'  
     .header
       .head_title
         = link_to '/', class: "title" do
@@ -25,7 +26,6 @@
             ログイン
           = link_to '/users/sign_up', class: "btn" do
             サインアップ
-
     = yield
     .footer
       .foot_title

@@ -1,6 +1,6 @@
 class QuestsController < ApplicationController
   before_action :move_to_index, except: [:index, :show,]
-  before_action :set_quest, only: :show
+  before_action :set_quest, only: [:show, :destroy]
 
   def new
     @quest = Quest.new
@@ -8,11 +8,11 @@ class QuestsController < ApplicationController
 
   def create
     Quest.create(quest_params)
-    redirect_to root_path
+    redirect_to root_path, notice: 'クエストを発注しました'
   end
 
   def index
-    @quests = Quest.all.order("created_at DESC")
+    @quests = Quest.includes(:user).order("created_at DESC")
   end
 
   def show
@@ -20,9 +20,14 @@ class QuestsController < ApplicationController
     @answers = @quest.answers.includes(:user).order("created_at DESC")
   end
 
+  def destroy
+    @quest.destroy
+    redirect_to root_path, notice: 'クエストを削除しました'
+  end
+
   private
   def quest_params
-    params.require(:quest).permit(:title)
+    params.require(:quest).permit(:title).merge(user_id: current_user.id)
   end
 
   def set_quest
@@ -31,7 +36,7 @@ class QuestsController < ApplicationController
 
   def move_to_index
     unless user_signed_in?
-      redirect_to root_path
+      redirect_to new_user_session_path
     end
   end
 

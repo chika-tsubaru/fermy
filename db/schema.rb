@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2020_09_22_080219) do
   create_table "answers", force: :cascade do |t|
     t.string "plan", null: false
     t.text "text", null: false
-    t.integer "user_id"
+    t.integer "user_id", null: false
     t.integer "quest_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2020_09_22_080219) do
 
   create_table "quests", force: :cascade do |t|
     t.string "title", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

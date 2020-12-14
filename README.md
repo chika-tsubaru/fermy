@@ -15,10 +15,10 @@ fermy
 
 # 本番環境
 
-url
+url：fermy.herokuapp.com
 # ログイン情報（テスト用）
-- Eメール：
-- パスワード：
+- Eメール：gest.@com
+- パスワード：gestgest
 
 
 # 制作背景（意図）
@@ -50,14 +50,19 @@ url
 # 使用技術（開発環境）
 
 ## バックエンド
+Ruby, Ruby on Rails
 ## フロントエンド
+Haml, Sass, JavaScript
 ## データベース
+PostgreSQL
 ## インフラ
-## Webサーバ（本番環境）
-## アプリケーションサーバ（本番環境）
+Heroku
 ## ソース管理
+GitHub, GitHubDesktop
 ## テスト
+Rspec
 ## エディタ
+VSCode
 
 
 # 課題や今後実装したい機能
