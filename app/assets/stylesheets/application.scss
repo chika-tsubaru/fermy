@@ -32,3 +32,22 @@
 @import "user";
 @import "answers";
 @import "flash";
+
+.footer {
+  .foot_title {
+    height: 3vh;
+    text-align: center;
+    padding-top: 15px;
+    font-size: 20px;
+    color: gray;
+  }
+  .foot_btn {
+    text-align: center;
+    padding-top: 10px;
+    font-size: 30px;
+    .btn {
+      color: blue;
+      text-decoration: none;
+    }
+  }
+}

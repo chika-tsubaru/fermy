@@ -7,8 +7,12 @@ class QuestsController < ApplicationController
   end
 
   def create
-    Quest.create(quest_params)
-    redirect_to root_path, notice: 'クエストを発注しました'
+    quest = Quest.new(quest_params)
+    if quest.save
+      redirect_to root_path, notice: 'クエストを発注しました'
+    else
+      redirect_to new_quest_path, notice: '必須事項を入力してください'
+    end
   end
 
   def index

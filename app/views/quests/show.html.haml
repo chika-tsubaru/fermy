@@ -1,24 +1,28 @@
 .content_box
   .quest_title
     = @quest.title
-    .btn
-      = link_to new_quest_answer_path(@quest.id), class: "content_btn" do
-        挑む
-    - if current_user.id = @quest.user_id && user_signed_in?
+    - if user_signed_in?
       .btn
-        = link_to quest_path(@quest.id), method: :delete, class: "content_btn" do
-          削除する
+        = link_to new_quest_answer_path(@quest.id), class: "content_btn" do
+          挑む
+      - if current_user.id == @quest.user_id
+        .btn
+          = link_to quest_path(@quest.id), method: :delete, class: "content_btn" do
+            削除する
   .answer_row
     ＜解答一覧＞
     -if @answer
       - @answers.each_with_index do |answer| 
         .content
-          .answer_plan
-            = answer.plan
+          .answerHead
+            .answerHead__plan
+              = answer.plan
+            - if user_signed_in?
+              - if current_user.id == answer.user_id
+                .answerHead__edit
+                  = link_to edit_quest_answer_path(@quest.id, id: answer.id), class: "edit_btn" do
+                    編集する 
           %a{class: "answer_btn"}
             ▼
           .answer_text
             = safe_join(answer.text.split("\n"),tag(:br))
-          .answer_edit
-            = link_to edit_quest_answer_path(@quest.id, id: answer.id), class: "content_btn" do
-              編集する 

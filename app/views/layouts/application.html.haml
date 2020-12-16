@@ -13,21 +13,24 @@
     = render 'layouts/notifications'  
     .header
       .head_title
-        = link_to '/', class: "title" do
+        = link_to root_path, class: "title" do
           Fermy
       .head_btns
         - if user_signed_in?
           = link_to destroy_user_session_path, method: :delete, class: "btn" do
             ログアウト
-          = link_to '/quests/new', class: "btn" do
+          = link_to new_quest_path, class: "btn" do
             クエスト発注
         - else
-          = link_to '/users/sign_in', class: "btn" do
+          = link_to new_user_session_path, class: "btn" do
             ログイン
-          = link_to '/users/sign_up', class: "btn" do
+          = link_to new_user_registration_path, class: "btn" do
             サインアップ
     = yield
     .footer
       .foot_title
         %h2
           どんな切り口で解こうか？
+      .foot_btn
+        = link_to root_path, class: "btn" do
+          トップへ戻る

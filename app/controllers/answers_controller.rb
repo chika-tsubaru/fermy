@@ -1,6 +1,7 @@
 class AnswersController < ApplicationController
 
   before_action :answer_find, only: [:edit, :update]
+  before_action :move_to_signup
 
   def new
     @answer = Answer.new
@@ -8,8 +9,12 @@ class AnswersController < ApplicationController
   end
 
   def create
-    Answer.create(answer_params)
-    redirect_to quest_path(params[:quest_id]), notice: '解答しました'
+    answer = Answer.new(answer_params)
+    if answer.save
+      redirect_to quest_path(params[:quest_id]), notice: '解答しました'
+    else
+      redirect_to new_quest_answer_path, notice: '必須項目を入力してください'
+    end
   end
 
   def edit
@@ -30,4 +35,10 @@ class AnswersController < ApplicationController
     @answer = Answer.find(params[:id])
   end
 
+  private
+  def move_to_signup
+    unless user_signed_in?
+      redirect_to new_user_registration_path, notice: '解答するには新規登録が必要です'
+    end 
+  end
 end

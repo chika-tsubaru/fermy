@@ -1,0 +1,10 @@
+.cotent_row
+  .quest_title
+    = quest.title
+  .answer_form
+    = form_with model: [quest, answer], html: {class: "form"}, local: true do |f|
+      .form_plan
+        = f.text_field :plan, class: 'plan', placeholder: '切り口', autofocus: true
+      .form_text
+        = f.text_area :text, class: 'text', placeholder: '本文'
+      = f.submit '編集', class: 'btn'
