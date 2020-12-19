@@ -12,7 +12,7 @@
 
 ## 本番環境
 
-[fermy](fermy.herokuapp.com)
+[fermy](http://fermy.herokuapp.com)
 
 
 ## ログイン情報（テスト用）
