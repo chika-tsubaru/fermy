@@ -1,14 +1,23 @@
 require 'rails_helper'
 
 describe QuestsController do
+  let(:user) { create(:user) }
+
   describe 'GET #new' do
-    it "renders the :new template" do
-      get :new
-      expect(response).to render_template :new
+    context 'log in' do
+      before do
+        login user
+      end
+
+      it "renders the :new template" do
+        login user
+        get :new
+        expect(response).to render_template :new
+      end
     end
   end
 
-  describe 'GET index' do
+  describe 'GET #index' do
     it "populates an array of quests ordered by createed_at DESC" do
       quests = create_list(:quest, 3)
       get :index
