@@ -10,6 +10,10 @@ describe QuestsController do
         get :new
       end
 
+      it "assigns @quest" do
+        expect(assigns(:quest)).to be_a_new(Quest)
+      end
+
       it "renders the :new template" do
         expect(response).to render_template :new
       end
@@ -62,7 +66,7 @@ describe QuestsController do
           expect{ subject }.not_to change(Quest, :count)
         end
 
-        it 'renders new_quest' do
+        it 'renders new_quest_path' do
           subject
           expect(response).to redirect_to(new_quest_path)
         end

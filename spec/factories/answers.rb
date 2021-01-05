@@ -4,5 +4,6 @@ FactoryBot.define do
     plan {"test"}
     text {"testtest"}
     user
+    quest
   end
 end
