@@ -87,97 +87,48 @@ describe AnswersController do
     end
   end
 
+  describe 'GET #edit' do
+    let(:params) { { user_id: user.id, quest_id: quest.id, answer: attributes_for(:answer) } }
+    let(:update_params) { { user_id: user.id, quest_id: quest.id, answer: attributes_for(:answer, plan: "update") } }
 
-  # describe 'GET #edit' do
-  #   context 'log in' do
-  #     before do
-  #       login user
-  #       get :new, params: {quest_id: quest.id}
-  #     end
 
-  #     it "locates the requersted @answer" do
-  #       answer = create(:answer)
-  #       get :edit, params: {quest_id: quest.id}
-  #       expect(assigns(:answer)).to eq answer
-  #     end
+    context 'log in' do
+      
+      before do
+        login user
+      end
 
-  #     it "locates the requersted @quest" do
-  #       expect(assigns(:quest)).to eq quest
-  #     end
+      subject {
+        post :create,
+        params: params
+      }
 
-  #     it "renders the :edit template" do
-  #       expect(response).to render_template :edit
-  #     end
-  #   end
+      it "assigns @quest" do
+        subject
+        get :edit, params: update_params
+        expect(assigns(:quest)).to eq quest
+      end
 
-  #   context 'not log in' do
-  #     before do
-  #       get :edit, params: {quest_id: quest.id}
-  #     end
+      it "assigns @answer" do
+        subject
+        get :edit, params: update_params
+        expect(assigns(:answer)).to eq answer
+      end
 
-  #     it 'redirects to new_user_registration_path' do
-  #       expect(response).to redirect_to(new_user_registration_path)
-  #     end
-  #   end
-  # end
+      it "renders the :edit template" do
+        expect(response).to render_template :edit
+      end
+    end
 
-  # describe 'PATCH #update' do
-  #   let(:params) { { user_id: user.id, quest_id: quest.id, answer: attributes_for(:answer) } }
+    context 'not log in' do
+      before do
+        get :edit, params: { user_id: user.id, quest_id: quest.id, answer: attributes_for(:answer) }
+      end
 
-  #   context 'log in' do
-  #     before do
-  #       login user
-  #     end
-
-  #     context 'can update' do
-  #       subject {
-  #         post :create,
-  #         params: params
-  #       }
-
-  #       it 'change answer' do
-  #         subject
-  #         patch :update, user_id: user.id, quest_id: quest.id, answer: attributes_for(:answer, plan: 'change', text: 'change')
-  #         answer.reload
-  #         expect(answer.plan).to eq("change")
-  #         expect(answer.text).to eq("change")
-  #       end
-
-  #       it 'redirects to quest_path' do
-  #         subject
-  #         patch :update, user_id: user.id, quest_id: quest.id, answer: attributes_for(:answer, plan: 'change', text: 'change')
-  #         expect(response).to redirect_to(quest_path(quest))
-  #       end
-  #     end
-
-  #     context 'can not update' do
-  #       let(:params) { { user_id: user.id, quest_id: quest.id, answer: attributes_for(:answer) } }
-
-  #       subject {
-  #         post :create,
-  #         params: params
-  #       }
-
-  #       it 'does not count up' do
-  #         subject
-  #         patch :update, user_id: user.id, quest_id: quest.id, answer: attributes_for(:answer, plan: '')
-  #         expect{ subject }.not_to change(Answer, :count)
-  #       end
-
-  #       it 'renders new_quest_answer_path' do
-  #         subject
-  #         patch :update, user_id: user.id, quest_id: quest.id, answer: attributes_for(:answer, plan: '')
-  #         expect(response).to redirect_to(new_quest_answer_path)
-  #       end
-  #     end
-  #   end
-
-  #   context 'not log in' do
-
-  #     it 'redirects to new_user_registration_path' do
-  #       patch :update, params: params
-  #       expect(response).to redirect_to(new_user_registration_path)
-  #     end
-  #   end
-  # end
+      it 'redirects to new_user_registration_path' do
+        expect(response).to redirect_to(new_user_registration_path)
+      end
+    end
+  end
+  
 end
